@@ -40,5 +40,8 @@ internal class Program
         sf.FlightDetailsDel(TestData.BoingPlane);
 
         Console.WriteLine($"\n\nDuration average to Paris: {sf.DurationAverageDel("Madrid")}");
+
+
+
     }
 }
