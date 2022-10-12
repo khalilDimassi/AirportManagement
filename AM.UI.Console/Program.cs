@@ -22,7 +22,6 @@ internal class Program
         Console.WriteLine("Flight dates Airbus planes");
         sf.ShowFlightDetails(TestData.Airbusplane);
         
-
         Console.WriteLine($"Number of flights up for the next 7 days: {sf.ProgrammedFlightNumber(new DateTime(2021, 12, 30))}");
 
         Console.WriteLine($"Estimated duration to Paris: {sf.DurationAverage("Paris")}");
@@ -35,6 +34,7 @@ internal class Program
         foreach (var item in sf.SeniorTravellers(TestData.flight1))
             Console.WriteLine($"name: {item.FirstName}\ndate of birth: {item.BirthDate}");
             
-        
+        Console.WriteLine("Flights grouped by destination:");
+        sf.DestinationGroupedFlights();
     }
 }
