@@ -129,7 +129,7 @@ namespace AM.ApplicationCore.Services
             //var query = from p in flight.Passengers.OfType<Traveller>()
             //            orderby p.BirthDate
             //            select p
-            //            take 3;
+            //            take 3
 
             return flight.Passengers.OfType<Traveller>().OrderBy(passenger => passenger.BirthDate).Select(passenger => passenger).Take(3);
         }

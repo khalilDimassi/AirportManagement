@@ -32,7 +32,10 @@ internal class Program
 
         Console.WriteLine("\n\nEldest 3 travellers");
         foreach (var item in sf.SeniorTravellers(TestData.flight1))
-            Console.WriteLine($"name: {item.FirstName}\ndate of birth: {item.BirthDate}");
+        {
+            item.UpperFullName();
+            Console.WriteLine($"name: {item.FirstName} {item.LastName};  date of birth: {item.BirthDate}");
+        }
 
         Console.WriteLine("\n\nFlights grouped by destination:");
         sf.DestinationGroupedFlights();
