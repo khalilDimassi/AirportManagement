@@ -123,6 +123,23 @@ namespace AM.ApplicationCore.Services
             return query.Take(3);
         }
 
+        public void DestinationGroupedFlights()
+        {
+            var query = from f in Flights
+                        group f by f.Destination;
+
+            foreach (var item in query)
+            {
+                Console.WriteLine($"\nDestination: {item.Key}");
+                foreach (var f in item)
+                {
+                    Console.WriteLine($"Decollage: {f.FlightDate}");
+                }
+            }
+        }
+
+        
+
 
     }
 }

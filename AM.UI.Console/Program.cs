@@ -15,26 +15,26 @@ internal class Program
 
         Console.WriteLine("************************************ TESTS AREA  ****************************** ");
 
-        Console.WriteLine("Flight dates to Madrid");
+        Console.WriteLine("\n\nFlight dates to Madrid");
         foreach (var item in sf.GetFlightDates("Madrid"))
             Console.WriteLine(item);
 
-        Console.WriteLine("Flight dates Airbus planes");
+        Console.WriteLine("\n\nFlight dates Airbus planes");
         sf.ShowFlightDetails(TestData.Airbusplane);
-        
 
-        Console.WriteLine($"Number of flights up for the next 7 days: {sf.ProgrammedFlightNumber(new DateTime(2021, 12, 30))}");
+        Console.WriteLine($"\n\nNumber of flights up for the next 7 days: {sf.ProgrammedFlightNumber(new DateTime(2021, 12, 30))}");
 
-        Console.WriteLine($"Estimated duration to Paris: {sf.DurationAverage("Paris")}");
+        Console.WriteLine($"\n\nEstimated duration to Paris: {sf.DurationAverage("Paris")}");
 
-        Console.WriteLine("Ordered longest to shortest flights:}");
+        Console.WriteLine("\n\nOrdered longest to shortest flights:");
         foreach (var item in sf.OrderedDurationFlights()) 
             Console.WriteLine($"flight: {item}");
 
-        Console.WriteLine("Eldest 3 travellers");
+        Console.WriteLine("\n\nEldest 3 travellers");
         foreach (var item in sf.SeniorTravellers(TestData.flight1))
             Console.WriteLine($"name: {item.FirstName}\ndate of birth: {item.BirthDate}");
-            
-        
+
+        Console.WriteLine("\n\nFlights grouped by destination:");
+        sf.DestinationGroupedFlights();
     }
 }
