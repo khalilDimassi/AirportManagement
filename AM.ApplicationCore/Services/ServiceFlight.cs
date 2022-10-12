@@ -138,7 +138,38 @@ namespace AM.ApplicationCore.Services
             }
         }
 
-        
+        public Action<Plane> FlightDetailsDel;
+        public Func<String, Double>? DurationAverageDel;
+
+        public ServiceFlight()
+        {
+            //FlightDetailsDel = ShowFlightDetails;
+            //DurationAverageDel = DurationAverage;
+
+            FlightDetailsDel = plane =>
+            {
+                var query = from flight in Flights
+                            where flight.Plane.Equals(plane)
+                            select new
+                            {
+                                flight.FlightDate,
+                                flight.Destination
+                            };
+
+                foreach (var item in query)
+                {
+                    System.Console.WriteLine($"\nDate: {item.FlightDate}, Desination: {item.Destination}");
+                }
+            };
+
+            DurationAverageDel = destination =>
+            {
+                return  (from f in Flights
+                        where (f.Destination.Equals(destination))
+                        select f.EstimatedDuration).Average();
+            };
+        }
+
 
 
     }

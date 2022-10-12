@@ -36,5 +36,9 @@ internal class Program
 
         Console.WriteLine("\n\nFlights grouped by destination:");
         sf.DestinationGroupedFlights();
+
+        sf.FlightDetailsDel(TestData.BoingPlane);
+
+        Console.WriteLine($"\n\nDuration average to Paris: {sf.DurationAverageDel("Madrid")}");
     }
 }
