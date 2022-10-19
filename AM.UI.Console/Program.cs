@@ -32,22 +32,8 @@ internal class Program
 
         Console.WriteLine("\n\nEldest 3 travellers");
         foreach (var item in sf.SeniorTravellers(TestData.flight1))
-        {
-            item.UpperFullName();
-            Console.WriteLine($"name: {item.FirstName} {item.LastName};  date of birth: {item.BirthDate}");
-        }
-
-        Console.WriteLine("\n\nFlights grouped by destination:");
-        sf.DestinationGroupedFlights();
-
-        sf.FlightDetailsDel(TestData.BoingPlane);
-
-        Console.WriteLine($"\n\nDuration average to Paris: {sf.DurationAverageDel("Madrid")}");
-
-
-
-
-
-
+            Console.WriteLine($"name: {item.FirstName}\ndate of birth: {item.BirthDate}");
+            
+        
     }
 }
