@@ -45,9 +45,5 @@ internal class Program
         Console.WriteLine($"\n\nDuration average to Paris: {sf.DurationAverageDel("Madrid")}");
 
 
-
-
-
-
     }
 }
