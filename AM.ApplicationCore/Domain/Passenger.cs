@@ -1,19 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.CompilerServices;
+using System.Runtime.ExceptionServices;
 
 namespace AM.ApplicationCore.Domain
 {
     public class Passenger
     {
+        [Key, MaxLength(7)]
         public string PassportNumber { get; set; }
+
+        [MinLength(3, ErrorMessage = "First name must be 3 characters or more"), 
+            MaxLength(25, ErrorMessage = "First name must be 25 characters or less")]
         public string FirstName { get; set; }
         public string LastName { get; set; }
+
+        [DisplayName("Date of Birth"), 
+            DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true), 
+            DataType(DataType.DateTime, ErrorMessage = "Invalid Date")]
         public DateTime BirthDate { get; set; }
+
+        [RegularExpression(@"\d{8}", ErrorMessage = "Invalid phone number")]
         public int TelNumber { get; set; }
+
+        [RegularExpression(@"\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b", ErrorMessage = "Invalid email")]
         public string EmailAddress { get; set; }
+
         //prop de navigation
         public virtual List<Flight> Flights { get; set; }
 

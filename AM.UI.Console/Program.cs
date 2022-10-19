@@ -27,7 +27,7 @@ internal class Program
         Console.WriteLine($"\n\nEstimated duration to Paris: {sf.DurationAverage("Paris")}");
 
         Console.WriteLine("\n\nOrdered longest to shortest flights:");
-        foreach (var item in sf.OrderedDurationFlights()) 
+        foreach (var item in sf.OrderedDurationFlights())
             Console.WriteLine($"flight: {item}");
 
         Console.WriteLine("\n\nEldest 3 travellers");
@@ -43,6 +43,9 @@ internal class Program
         sf.FlightDetailsDel(TestData.BoingPlane);
 
         Console.WriteLine($"\n\nDuration average to Paris: {sf.DurationAverageDel("Madrid")}");
+
+
+
 
 
 
