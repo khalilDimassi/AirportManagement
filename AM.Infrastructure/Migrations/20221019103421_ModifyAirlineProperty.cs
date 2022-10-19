@@ -4,13 +4,13 @@
 
 namespace AM.Infrastructure.Migrations
 {
-    public partial class ModifyAirlineLogoPropety : Migration
+    public partial class ModifyAirlineProperty : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.RenameColumn(
                 name: "Airline",
-                table: "SetDbFlight",
+                table: "Flights",
                 newName: "AirlineLogo");
         }
 
@@ -18,7 +18,7 @@ namespace AM.Infrastructure.Migrations
         {
             migrationBuilder.RenameColumn(
                 name: "AirlineLogo",
-                table: "SetDbFlight",
+                table: "Flights",
                 newName: "Airline");
         }
     }

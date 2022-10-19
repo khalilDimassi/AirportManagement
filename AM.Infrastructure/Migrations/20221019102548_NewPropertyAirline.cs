@@ -4,13 +4,13 @@
 
 namespace AM.Infrastructure.Migrations
 {
-    public partial class NewProertyAirline : Migration
+    public partial class NewPropertyAirline : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
                 name: "Airline",
-                table: "SetDbFlight",
+                table: "Flights",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "");
@@ -20,7 +20,7 @@ namespace AM.Infrastructure.Migrations
         {
             migrationBuilder.DropColumn(
                 name: "Airline",
-                table: "SetDbFlight");
+                table: "Flights");
         }
     }
 }
