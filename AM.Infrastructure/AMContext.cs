@@ -1,6 +1,7 @@
 ﻿using AM.ApplicationCore.Domain;
 using AM.Infrastructure.Configurations;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Proxies;
 
 namespace AM.Infrastructure
 {
@@ -8,6 +9,8 @@ namespace AM.Infrastructure
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.UseLazyLoadingProxies();
+
             optionsBuilder.UseSqlServer(@"Data Source=(localdb)\mssqllocaldb;
                                         Initial Catalog=AirportManagementDB;
                                         Integrated Security=true");

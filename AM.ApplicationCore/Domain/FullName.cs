@@ -11,8 +11,8 @@ namespace AM.ApplicationCore.Domain
     {
         [MinLength(3, ErrorMessage = "First name must be 3 characters or more"),
             MaxLength(25, ErrorMessage = "First name must be 25 characters or less")]
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
 
     }
 }

@@ -6,6 +6,11 @@ internal class Program
 {
     private static void Main(string[] args)
     {
+        if (args is null)
+        {
+            throw new ArgumentNullException(nameof(args));
+        }
+
         Console.WriteLine("Hello, World!");
 
         ServiceFlight sf = new()
@@ -48,7 +53,7 @@ internal class Program
 
         /*              CONTEXT TESTING              */
         Console.WriteLine("\n\n\n\n************************************ CONTEXT TESTING  ******************************");
-        AMContext Context = new AMContext();
+        AMContext Context = new();
 
         //Context.Flights.Add(TestData.flight2);
         //Context.SaveChanges();
