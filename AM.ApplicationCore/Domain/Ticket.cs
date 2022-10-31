@@ -15,7 +15,7 @@ namespace AM.ApplicationCore.Domain
         public int FlightID { get; set; }
         public string PassportNumber { get; set; }
 
-        public Passenger Passenger { get; set; }
-        public Flight Flight { get; set; }
+        public virtual Passenger Passenger { get; set; }
+        public virtual Flight Flight { get; set; }
     }
 }
