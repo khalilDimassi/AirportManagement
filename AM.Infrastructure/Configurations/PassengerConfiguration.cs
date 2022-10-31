@@ -18,6 +18,8 @@ namespace AM.Infrastructure.Configurations
                 s.Property(f => f.FirstName).HasColumnName("PssFirstName").HasMaxLength(30);
                 s.Property(l => l.LastName).HasColumnName("PassLastName").IsRequired();
             });
+
+            //builder.HasDiscriminator<string>("IsTraveller").HasValue<Passenger>("0").HasValue<Traveller>("1").HasValue<Staff>("2");
         }
     }
 }

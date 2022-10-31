@@ -120,17 +120,17 @@
             Destination = "Paris",
             EffectiveArrival = new DateTime(2022, 01, 01, 17, 10, 10),
             EstimatedDuration = 110,
-            Passengers = new List<Passenger>
-            {
-                captain,
-                hostess1,
-                hostess2,
-                traveller1,
-                traveller2,
-                traveller3,
-                traveller4,
-                traveller5
-            },
+            //Passengers = new List<Passenger>
+            //{
+            //    captain,
+            //    hostess1,
+            //    hostess2,
+            //    traveller1,
+            //    traveller2,
+            //    traveller3,
+            //    traveller4,
+            //    traveller5
+            //},
             Plane = Airbusplane
         };
         public static Flight flight2 = new Flight

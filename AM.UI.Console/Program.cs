@@ -8,10 +8,11 @@ internal class Program
     {
         Console.WriteLine("Hello, World!");
         // TP2 - Q5:Créer une instance de la classe ServiceFlight
-        ServiceFlight sf = new ServiceFlight();
-
-        //TP2-Q5:Affecter listFlights à la propriété Flights de la classe ServiceFlight
-        sf.Flights = TestData.listFlights;
+        ServiceFlight sf = new()
+        {
+            //TP2-Q5:Affecter listFlights à la propriété Flights de la classe ServiceFlight
+            Flights = TestData.listFlights
+        };
 
         Console.WriteLine("************************************ TESTS AREA  ****************************** ");
 
@@ -30,12 +31,12 @@ internal class Program
         foreach (var item in sf.OrderedDurationFlights())
             Console.WriteLine($"flight: {item}");
 
-        Console.WriteLine("\n\nEldest 3 travellers");
-        foreach (var item in sf.SeniorTravellers(TestData.flight1))
-        {
-            item.UpperFullName();
-            Console.WriteLine($"name: {item.FullName.FirstName} {item.FullName.LastName};  date of birth: {item.BirthDate}");
-        }
+        //Console.WriteLine("\n\nEldest 3 travellers");
+        //foreach (var item in sf.SeniorTravellers(TestData.flight1))
+        //{
+        //    item.UpperFullName();
+        //    Console.WriteLine($"name: {item.FullName.FirstName} {item.FullName.LastName};  date of birth: {item.BirthDate}");
+        //}
 
         Console.WriteLine("\n\nFlights grouped by destination:");
         sf.DestinationGroupedFlights();

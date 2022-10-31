@@ -9,7 +9,8 @@ namespace AM.Infrastructure
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Data Source=(localdb)\mssqllocaldb;
-            Initial Catalog=AirportManagementDB;Integrated Security=true");
+                                        Initial Catalog=AirportManagementDB;
+                                        Integrated Security=true");
             base.OnConfiguring(optionsBuilder);
         }
         public DbSet<Plane> Planes { get; set; }
@@ -23,6 +24,10 @@ namespace AM.Infrastructure
             mb.ApplyConfiguration(new PlaneConfiguration());
             mb.ApplyConfiguration(new FlightConfiguration());
             mb.ApplyConfiguration(new PassengerConfiguration());
+            mb.ApplyConfiguration(new ticketConfiguration());
+
+            mb.Entity<Staff>().ToTable("Staff");
+            mb.Entity<Traveller>().ToTable("Traveller");
         }
 
         protected override void ConfigureConventions(ModelConfigurationBuilder mcb)

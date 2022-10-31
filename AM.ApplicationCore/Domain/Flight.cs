@@ -16,12 +16,11 @@ namespace AM.ApplicationCore.Domain
         [ForeignKey("Plane")]
         public int PlaneId { get; set; }
 
-        //prop de navigation
-        public virtual List<Passenger> Passengers { get; set; }
+        //public virtual List<Passenger> Passengers { get; set; }
+        public virtual List<Ticket> Tickets { get; set; }
         public virtual Plane Plane { get; set; }
+        
 
-
-        //TP1-Q6: Réimplémenter la méthode ToString()
         public override string ToString()
         {
             return "FlightId: " + FlightId + " FlightDate: " + FlightDate + " Destination: " + Destination;

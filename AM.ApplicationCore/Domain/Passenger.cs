@@ -19,24 +19,14 @@ namespace AM.ApplicationCore.Domain
         [DataType(DataType.EmailAddress, ErrorMessage = "Invalid email")]
         public string EmailAddress { get; set; }
 
-        //prop de navigation
-        public virtual List<Flight> Flights { get; set; }
+        //public virtual List<Flight> Flights { get; set; }
+        public virtual List<Ticket> Tickets { get; set; }
+
 
         public override string ToString()
         {
             return "FirstName: " + FullName.FirstName + " LastName: " + FullName.LastName + " date of Birth: "+ BirthDate;
         }
-
-        //TP1-Q10: Créer les trois méthodes bool CheckProfile(...)
-        //public bool CheckProfile(string firstName, string lastName)
-        //{
-        //    return FirstName == firstName && LastName == lastName;
-        //}
-
-        //public bool CheckProfile(string firstName, string lastName, string email)
-        //{
-        //    return FirstName == firstName && LastName == lastName && EmailAddress == email;
-        //}
 
         public bool CheckProfile(string firstName, string lastName, string email = null)
         {
@@ -46,7 +36,6 @@ namespace AM.ApplicationCore.Domain
                 return FullName.FirstName == firstName && FullName.LastName == lastName;
         }
 
-        //TP1-Q11.a: Implémenter la méthode PassengerType()
         public virtual void PassengerType()
         {
             Console.WriteLine("I am a Passenger");
