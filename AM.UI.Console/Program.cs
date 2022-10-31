@@ -1,20 +1,19 @@
-﻿// See https://aka.ms/new-console-template for more information
-using AM.ApplicationCore.Domain;
+﻿using AM.ApplicationCore.Domain;
 using AM.ApplicationCore.Services;
+using AM.Infrastructure;
 
 internal class Program
 {
     private static void Main(string[] args)
     {
         Console.WriteLine("Hello, World!");
-        // TP2 - Q5:Créer une instance de la classe ServiceFlight
+
         ServiceFlight sf = new()
         {
-            //TP2-Q5:Affecter listFlights à la propriété Flights de la classe ServiceFlight
             Flights = TestData.listFlights
         };
 
-        Console.WriteLine("************************************ TESTS AREA  ****************************** ");
+        Console.WriteLine("\n\n\n\n************************************ TESTS AREA  ******************************");
 
         Console.WriteLine("\n\nFlight dates to Madrid");
         foreach (var item in sf.GetFlightDates("Madrid"))
@@ -45,6 +44,16 @@ internal class Program
 
         Console.WriteLine($"\n\nDuration average to Paris: {sf.DurationAverageDel("Madrid")}");
 
+
+
+        /*              CONTEXT TESTING              */
+        Console.WriteLine("\n\n\n\n************************************ CONTEXT TESTING  ******************************");
+        AMContext Context = new AMContext();
+
+        //Context.Flights.Add(TestData.flight2);
+        //Context.SaveChanges();
+
+        Console.WriteLine($"\nPlane capacity of 2nd flight: {Context.Flights.First().Plane.Capacity}");
 
     }
 }
