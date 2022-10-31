@@ -1,22 +1,16 @@
 ﻿using AM.ApplicationCore.Domain;
+using AM.Infrastructure.Configurations;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AM.Infrastructure
 {
-    public class AMContext: DbContext
+    public class AMContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Data Source=(localdb)\mssqllocaldb;
-            Initial Catalog=LaouiniChahineDB;Integrated Security=true");
+            Initial Catalog=AirportManagementDB;Integrated Security=true");
             base.OnConfiguring(optionsBuilder);
-
         }
         public DbSet<Plane> Planes { get; set; }
         public DbSet<Flight> Flights { get; set; }
@@ -24,7 +18,16 @@ namespace AM.Infrastructure
         public DbSet<Traveller> Travellers { get; set; }
         public DbSet<Staff> Staff { get; set; }
 
-        
-    }
+        protected override void OnModelCreating(ModelBuilder mb)
+        {
+            mb.ApplyConfiguration(new PlaneConfiguration());
+            mb.ApplyConfiguration(new FlightConfiguration());
+            mb.ApplyConfiguration(new PassengerConfiguration());
+        }
 
+        protected override void ConfigureConventions(ModelConfigurationBuilder mcb)
+        {
+            mcb.Properties<DateTime>().HaveColumnType("date");
+        }
+    }
 }

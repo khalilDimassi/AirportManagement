@@ -34,7 +34,7 @@ internal class Program
         foreach (var item in sf.SeniorTravellers(TestData.flight1))
         {
             item.UpperFullName();
-            Console.WriteLine($"name: {item.FirstName} {item.LastName};  date of birth: {item.BirthDate}");
+            Console.WriteLine($"name: {item.FullName.FirstName} {item.FullName.LastName};  date of birth: {item.BirthDate}");
         }
 
         Console.WriteLine("\n\nFlights grouped by destination:");

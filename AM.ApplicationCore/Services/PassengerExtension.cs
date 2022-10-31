@@ -11,8 +11,12 @@ namespace AM.ApplicationCore.Services
     {
         public static void UpperFullName(this Passenger passenger)
         {
-            passenger.FirstName = passenger.FirstName[0].ToString().ToUpper() + passenger.FirstName.Substring(1);
-            passenger.LastName = passenger.LastName[0].ToString().ToUpper() + passenger.LastName.Substring(1);
+            passenger.FullName.FirstName = 
+                passenger.FullName.FirstName[0].ToString().ToUpper() 
+                + passenger.FullName.FirstName.Substring(1);
+            passenger.FullName.LastName = 
+                passenger.FullName.LastName[0].ToString().ToUpper() 
+                + passenger.FullName.LastName.Substring(1);
         }
     }
 }
