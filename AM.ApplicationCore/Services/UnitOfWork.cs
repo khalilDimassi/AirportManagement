@@ -30,9 +30,27 @@ namespace AM.ApplicationCore.Services
             return (IGenericRepository<T>) Activator.CreateInstance(_repositryType.MakeGenericType(typeof(T)), _context);
         }
 
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    _context.Dispose();
+                }
+                disposedValue = true;
+            }
+        }
+
+        ~unitofwork()
+        {
+            Dispose(disposing: false);
+        }
+
         public void Dispose()
         {
-            throw new NotImplementedException();
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }
