@@ -18,5 +18,10 @@ namespace AM.ApplicationCore.Interfaces
         //IEnumerable<Traveller> SeniorTravellers(Flight flight);
         void DestinationGroupedFlights();
 
+
+        void add(Flight flight);
+        void remove(Flight flight);
+        List<Flight> GetAll();
+        IList<Flight> GetAll();
     }
 }

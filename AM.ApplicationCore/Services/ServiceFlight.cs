@@ -6,16 +6,16 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using AM.ApplicationCore.Services;
 
 namespace AM.ApplicationCore.Services
 {
     public class ServiceFlight : IServiceFlight
     {
-        //TP2-Q3: Créer la propriété Flights et l’initialiser à une liste vide
+
         public List<Flight> Flights { get; set; } = new List<Flight>();
         public List<Traveller> Travellers { get; set; } = new List<Traveller>();
 
-        //TP2-Q6: Implémenter la méthode GetFlightDates(string destination)
         public List<DateTime> GetFlightDates(string destination)
         {
             IEnumerable<DateTime> lambdaQuery = Flights.Where(flight => flight.Destination == destination).Select(flight => flight.FlightDate);
@@ -23,8 +23,6 @@ namespace AM.ApplicationCore.Services
         }
 
 
-
-        //TP2-Q8: Implémenter la méthode GetFlights(string filterType, string filterValue)
         public void GetFlights(string filterType, string filterValue)
         {
             switch (filterType)
@@ -82,11 +80,6 @@ namespace AM.ApplicationCore.Services
             return Flights.OrderByDescending(flight => flight.EstimatedDuration).Select(flight => flight);
         }
 
-        //public IEnumerable<Traveller> SeniorTravellers(Flight flight)
-        //{
-        //    return flight.Passengers.OfType<Traveller>().OrderBy(passenger => passenger.BirthDate).Select(passenger => passenger).Take(3);
-        //}
-
         public void DestinationGroupedFlights()
         {
 
@@ -107,9 +100,6 @@ namespace AM.ApplicationCore.Services
 
         public ServiceFlight()
         {
-            //FlightDetailsDel = ShowFlightDetails;
-            //DurationAverageDel = DurationAverage;
-
             FlightDetailsDel = plane =>
             {
                 var query = from flight in Flights
@@ -129,12 +119,59 @@ namespace AM.ApplicationCore.Services
             DurationAverageDel = destination =>
             {
                 return (from f in Flights
-                        where (f.Destination.Equals(destination))
+                        where f.Destination.Equals(destination)
                         select f.EstimatedDuration).Average();
 
             };
         }
 
+        /* *************************************** generic repository ******************************** */
+
+        IGenericRepository<Flight> GenericRepository_;
+
+        public ServiceFlight(IGenericRepository<Flight> genericRepository)
+        {
+            GenericRepository_ = genericRepository;
+        }
+
+
+        public void add(Flight flight)
+        {
+            GenericRepository_.InsertEntity(flight);
+        }
+
+        public void remove(Flight flight)
+        {
+            GenericRepository_.DeleteEntity(flight);
+        }
+
+        public List<Flight> GetAll()
+        {
+            return GenericRepository_.GetAll().ToList();
+        }
+
+
+        /* *************************************** unit of work ******************************** */
+        public IUnitOfWork _unitOfWork;
+        public ServiceFlight(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
+        public void Insert(Flight f)
+        {
+            _unitOfWork.Repository<Flight>().InsertEntity(f);
+        }
+
+        public void Update(Flight f)
+        {
+            _unitOfWork.Repository<Flight>().UpdateEntity(f);
+        }
+
+        public IList<Flight> getAll()
+        {
+            return _unitOfWork.Repository<Flight>().GetAll().ToList();
+        }
 
 
     }

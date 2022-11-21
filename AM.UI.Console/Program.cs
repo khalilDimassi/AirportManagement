@@ -18,7 +18,7 @@ internal class Program
             Flights = TestData.listFlights
         };
 
-        Console.WriteLine("\n\n\n\n************************************ TESTS AREA  ******************************");
+        Console.WriteLine("\n\n\n\n************************************ TESTS AREA  ************************************");
 
         Console.WriteLine("\n\nFlight dates to Madrid");
         foreach (var item in sf.GetFlightDates("Madrid"))
@@ -52,7 +52,7 @@ internal class Program
 
 
         /*              CONTEXT TESTING              */
-        Console.WriteLine("\n\n\n\n************************************ CONTEXT TESTING  ******************************");
+        Console.WriteLine("\n\n\n\n************************************ CONTEXT TESTING  ************************************");
         AMContext Context = new();
 
         //Context.Flights.Add(TestData.flight2);
